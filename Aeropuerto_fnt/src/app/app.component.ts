@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AeropuertoService} from "./providers/aeropuerto.service";
+import {ApiService} from "./providers/api.service";
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+
+  constructor(public aeropuerto: AeropuertoService, public api: ApiService) {
+  }
+
   // title = 'Aeropuerto_fnt';
   /*resultado:number = 0;
 
@@ -60,7 +66,7 @@ export class AppComponent {
     this.lista.splice(this.lista.indexOf(persona), 1)
   }*/
 
-  lista = [
+  /*lista = [
     {
       'marca': 'Chevrolet',
       'modelos': [
@@ -125,7 +131,7 @@ export class AppComponent {
 
   adicionar_modelo ( marca: string, linea: string, version: string ) {
     let item = this.lista.filter( item => item.marca == marca )[0]
-    item.modelos.push( { 'linea': linea, 'version': version } )
+    item !== null ? item.modelos.push( { 'linea': linea, 'version': version } ) : alert('No se encontro el item')
   }
 
   adicionar_ciudad ( marca: string, ciudad: string ) {
@@ -142,7 +148,7 @@ export class AppComponent {
   }
 
   borrar_ciudad ( item: any, ciudad: any ) {
-    item.disponibilidad.splice( item.modelos.indexOf(ciudad) + 1, 1 )
+    item.disponibilidad.splice( item.modelos.indexOf(ciudad), 1 )
   }
 
   cambiar_marca ( item: any, nueva_marca: string ) {
@@ -156,6 +162,6 @@ export class AppComponent {
 
   cambiar_ciudad ( disp: any, nueva_ciudad: string ) {
     disp.ciudad = nueva_ciudad
-  }
+  }*/
 
 }
